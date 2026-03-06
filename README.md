@@ -54,7 +54,7 @@ lib/
 
 **Classes Included:**  
 - `Engine`  
-- `Automobile` (Base Class)  
+- `Automobile` 
 - `Vehicle`  
 - `Motorcycle`  
 - `Car`  
@@ -127,5 +127,4 @@ lib/
 
 ## 👤 Author
 
-- **Naro8 Joma**  
-- GitHub: [https://github.com/s12112343-cyber](https://github.com/s12112343-cyber)
+- **Nareman Joma**  
