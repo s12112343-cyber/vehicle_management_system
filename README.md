@@ -10,22 +10,22 @@ The project is organized into a clean, modular architecture as seen in the sourc
 ```text
 lib/
 ├── data/
-│   └── vehicle_data.dart      # Logic for JSON serialization & local File I/O
+│   └── vehicle_data.dart      
 ├── models/
-│   ├── automobile.dart        # Abstract base class for the hierarchy
-│   ├── car.dart               # Car model with specific attributes (Chairs, Leather)
-│   ├── engine.dart            # Engine specifications (FuelType, CC)
-│   ├── enums.dart             # Application-wide Enums (FuelType, GearType)
-│   ├── motorcycle.dart        # Motorcycle model (Tire Diameter, Length)
-│   ├── truck.dart             # Truck model (Weight capacities, Dimensions)
-│   └── vehicle.dart           # Unified vehicle properties
+│   ├── automobile.dart       
+│   ├── car.dart             
+│   ├── engine.dart           
+│   ├── enums.dart            
+│   ├── motorcycle.dart       
+│   ├── truck.dart            
+│   └── vehicle.dart      
 ├── screens/
-│   ├── car_screen.dart        # UI for managing Cars (CRUD + Search)
-│   ├── motorcycle_screen.dart # UI for managing Motorcycles
-│   └── truck_screen.dart      # UI for managing Trucks
-└── main.dart                  # Application entry point & Dashboard
+│   ├── car_screen.dart      
+│   ├── motorcycle_screen.dart
+│   └── truck_screen.dart    
+└── main.dart                
 
-```text
+```
 
 
 ---
