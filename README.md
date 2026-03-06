@@ -7,32 +7,13 @@ The project demonstrates advanced **Object-Oriented Programming (OOP)** in Dart,
 
 ## 📂 Project Structure
 
-```text
-lib/
-├── data/
-│   └── vehicle_data.dart       # Handles JSON saving/loading of vehicles
-├── models/
-│   ├── automobile.dart         # Base class for all vehicles
-│   ├── car.dart                # Car class extending Vehicle
-│   ├── engine.dart             # Engine class with FuelType
-│   ├── enums.dart              # FuelType & GearType enums
-│   ├── motorcycle.dart         # Motorcycle class
-│   └── vehicle.dart            # Vehicle base class
-├── screens/
-│   ├── car_screen.dart         # UI for managing Cars
-│   ├── motorcycle_screen.dart  # UI for managing Motorcycles
-│   └── truck_screen.dart       # UI for managing Trucks
-├── widgets/
-│   ├── vehicle_form.dart       # Form widget for Add/Edit vehicle
-│   └── vehicle_list.dart       # List widget for displaying vehicles
-└── main.dart                   # Main entry point of the app
 
 
 
 
 ---
 
-## 🚀 Features
+### 🚀 Features
 
 - **Add, Edit, Delete** vehicles  
 - **Insert at specific position** in the list  
