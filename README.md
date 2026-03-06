@@ -30,11 +30,7 @@ lib/
 │   └── vehicle_list.dart       
 └── main.dart                  
 ```
-# 🚗 Vehicle Management System (Flutter & Dart)
 
-A **full-featured mobile application** to manage **Motorcycles, Cars, and Trucks** with complete **CRUD functionality**, **search**, **insert at position**, **print details**, and **automatic JSON-based data persistence**.
-
----
 
 ## 🚀 Key Features
 
