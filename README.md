@@ -30,102 +30,106 @@ lib/
 │   └── vehicle_list.dart       
 └── main.dart                  
 ```
-🚀 Features
+# 🚗 Vehicle Management System (Flutter & Dart)
 
-➕ Add, ✏️ Edit, 🗑 Delete vehicles
+A **full-featured mobile application** to manage **Motorcycles, Cars, and Trucks** with complete **CRUD functionality**, **search**, **insert at position**, **print details**, and **automatic JSON-based data persistence**.
 
-📍 Insert vehicles at a specific position in the list
+---
 
-🔍 Search by:
+## 🚀 Key Features
 
-Manufacture Company
+- **➕ Add, ✏️ Edit, 🗑 Delete vehicles**  
+- **📍 Insert vehicles at a specific index in the list**  
+- **🔍 Advanced Search by:**  
+  - Manufacture Company  
+  - Plate Number  
+  - Manufacture Date  
+- **🖨 Print individual or all vehicles**  
+- **💾 Automatic data persistence using JSON**
 
-Plate Number
+---
 
-Manufacture Date
+## 🧠 Object-Oriented Architecture
 
-🖨 Print individual or all vehicles
+- **Inheritance**: `Automobile → Vehicle → Car/Truck/Motorcycle`  
+- **Encapsulation**: Private fields with getters & setters  
+- **Polymorphism**: Overriding display and print methods  
+- **Composition**: `Engine` object integrated into vehicle instances  
 
-Automatic JSON-based local storage
+**Classes Included:**  
+- `Engine`  
+- `Automobile` (Base Class)  
+- `Vehicle`  
+- `Motorcycle`  
+- `Car`  
+- `Truck`  
 
-🏍 Supported Vehicle Types
+---
 
-Cars
+## 🏍 Supported Vehicle Types
 
-Chair Number & Leather Interior
+### **Cars**
+- Number of Chairs  
+- Leather interior option  
+- Dimensions (Length & Width)  
+- Engine Details  
 
-Dimensions (Length & Width)
+### **Trucks**
+- Free Weight & Full Weight  
+- Dimensions  
+- Engine Details  
 
-Engine Details
+### **Motorcycles**
+- Tire Diameter & Length  
+- Engine Details  
 
-Trucks
+---
 
-Free Weight & Full Weight
+## 🖥 Application Screens
 
-Dimensions
+### **Home Screen**
+- Overview of vehicle counts (Cars, Trucks, Motorcycles)  
+- **🖨 Print All Vehicles button**  
 
-Engine Details
+### **Cars Screen**
+- Full CRUD operations  
+- Insert at a specific position  
+- Search by Company, Plate Number, or Manufacture Date  
+- Print individual car details  
 
-Motorcycles
+### **Trucks Screen**
+- Full CRUD operations  
+- Insert at a specific position  
+- Search by Company, Plate Number, or Manufacture Date  
+- Print individual truck details  
 
-Tire Diameter & Length
+### **Motorcycles Screen**
+- Full CRUD operations  
+- Insert at a specific position  
+- Search by Company, Plate Number, or Manufacture Date  
+- Print individual motorcycle details  
 
-Engine Details
+---
 
-🖥 Screens
+## 💾 Data Persistence
 
-Home Screen
+- JSON serialization using `dart:io` & `path_provider`  
+- Data saved automatically on Add/Edit/Delete/Insert  
+- Data loaded automatically when the app starts  
 
-Overview of vehicles count (Cars, Trucks, Motorcycles)
+---
 
-Print All Vehicles button
+## ⚙️ Technologies Used
 
-Cars Screen
+- **Flutter** – Mobile UI framework  
+- **Dart** – OOP programming  
+- **JSON encoding / decoding**  
+- **Local file storage**  
+- **OOP concepts**: Encapsulation, Inheritance, Polymorphism  
 
-Full CRUD
+---
 
-Insert at specific position
+## 👤 Author
 
-Search by company, plate, or date
-
-Print individual car
-
-Trucks Screen
-
-Full CRUD
-
-Insert at specific position
-
-Search by company, plate, or date
-
-Print individual truck
-
-Motorcycles Screen
-
-Full CRUD
-
-Insert at specific position
-
-Search by company, plate, or date
-
-Print individual motorcycle
-
-💾 Data Persistence
-
-JSON serialization with dart:io & path_provider
-
-Data saved automatically on Add/Edit/Delete/Insert
-
-Data loaded automatically on app start
-
-⚙️ Technologies Used
-
-Flutter – UI framework
-
-Dart – OOP programming
-
-JSON encoding / decoding
-
-Local file storage
-
-OOP concepts: Encapsulation, Inheritance, Polymorphism
+- **Naro8 Joma**  
+- GitHub: [https://github.com/s12112343-cyber](https://github.com/s12112343-cyber)
