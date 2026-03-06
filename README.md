@@ -6,82 +6,126 @@ The project demonstrates advanced **Object-Oriented Programming (OOP)** in Dart,
 ---
 
 ## 📂 Project Structure
-The project is organized into a clean, modular architecture as seen in the source code:
+
+The project is organized into a clean, modular architecture:
+
 ```text
 lib/
 ├── data/
-│   └── vehicle_data.dart      
+│   └── vehicle_data.dart     
 ├── models/
 │   ├── automobile.dart       
-│   ├── car.dart             
-│   ├── engine.dart           
-│   ├── enums.dart            
-│   ├── motorcycle.dart       
-│   ├── truck.dart            
-│   └── vehicle.dart      
+│   ├── car.dart               
+│   ├── engine.dart          
+│   ├── enums.dart             
+│   ├── motorcycle.dart         
+│   ├── truck.dart              
+│   └── vehicle.dart           
 ├── screens/
-│   ├── car_screen.dart      
-│   ├── motorcycle_screen.dart
-│   └── truck_screen.dart    
-└── main.dart                
-
+│   ├── car_screen.dart        
+│   ├── motorcycle_screen.dart 
+│   └── truck_screen.dart      
+├── widgets/
+│   ├── vehicle_form.dart       
+│   └── vehicle_list.dart       
+└── main.dart                  
 ```
+🚀 Features
 
+➕ Add, ✏️ Edit, 🗑 Delete vehicles
 
----
+📍 Insert vehicles at a specific position in the list
 
-## 🚀 Features
+🔍 Search by:
 
-- **Add, Edit, Delete** vehicles  
-- **Insert at specific position** in the list  
-- **Search** by:
-  - Manufacture Company  
-  - Plate Number  
-  - Manufacture Date  
-- **Print individual or all vehicles**  
-- Automatic **JSON-based local storage**  
+Manufacture Company
 
----
+Plate Number
 
-## 🏍 Supported Vehicle Types
+Manufacture Date
 
-**Cars**
-- Chair Number & Leather Interior  
-- Dimensions & Engine Details  
+🖨 Print individual or all vehicles
 
-**Trucks**
-- Free Weight & Full Weight  
-- Dimensions & Engine Details  
+Automatic JSON-based local storage
 
-**Motorcycles**
-- Tire Diameter & Length  
-- Engine Details  
+🏍 Supported Vehicle Types
 
----
+Cars
 
-## 🖥 Screens
+Chair Number & Leather Interior
 
-**Cars Screen** – CRUD + Insert + Search + Print  
-**Trucks Screen** – CRUD + Insert + Search + Print  
-**Motorcycles Screen** – CRUD + Insert + Search + Print  
+Dimensions (Length & Width)
 
----
+Engine Details
 
-## 💾 Data Persistence
+Trucks
 
-- JSON serialization with `dart:io` & `path_provider`  
-- Data saved automatically on Add/Edit/Delete/Insert  
-- Data loaded automatically on app start  
+Free Weight & Full Weight
 
----
+Dimensions
 
-## ⚙️ Technologies
+Engine Details
 
-- **Flutter** – UI  
-- **Dart** – OOP programming  
-- **JSON encoding / decoding**  
-- **Local file storage**  
-- **OOP concepts**: Encapsulation, Inheritance, Polymorphism  
+Motorcycles
 
----
- 
+Tire Diameter & Length
+
+Engine Details
+
+🖥 Screens
+
+Home Screen
+
+Overview of vehicles count (Cars, Trucks, Motorcycles)
+
+Print All Vehicles button
+
+Cars Screen
+
+Full CRUD
+
+Insert at specific position
+
+Search by company, plate, or date
+
+Print individual car
+
+Trucks Screen
+
+Full CRUD
+
+Insert at specific position
+
+Search by company, plate, or date
+
+Print individual truck
+
+Motorcycles Screen
+
+Full CRUD
+
+Insert at specific position
+
+Search by company, plate, or date
+
+Print individual motorcycle
+
+💾 Data Persistence
+
+JSON serialization with dart:io & path_provider
+
+Data saved automatically on Add/Edit/Delete/Insert
+
+Data loaded automatically on app start
+
+⚙️ Technologies Used
+
+Flutter – UI framework
+
+Dart – OOP programming
+
+JSON encoding / decoding
+
+Local file storage
+
+OOP concepts: Encapsulation, Inheritance, Polymorphism
