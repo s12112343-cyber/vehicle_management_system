@@ -7,7 +7,7 @@ The project demonstrates advanced **Object-Oriented Programming (OOP)** in Dart,
 
 ## 📂 Project Structure
 The project is organized into a clean, modular architecture as seen in the source code:
-
+```text
 lib/
 ├── data/
 │   └── vehicle_data.dart      # Logic for JSON serialization & local File I/O
@@ -25,7 +25,7 @@ lib/
 │   └── truck_screen.dart      # UI for managing Trucks
 └── main.dart                  # Application entry point & Dashboard
 
-
+```text
 
 
 ---
