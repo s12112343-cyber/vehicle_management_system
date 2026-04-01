@@ -1,14 +1,38 @@
 import 'enums.dart';
 
 class Engine {
-  String _manufacture = '';
-  DateTime _manufactureDate = DateTime.now();
-  String _model = '';
-  int _capacity = 0;
-  int _cylinders = 0;
-  FuelType _fuelType = FuelType.gasoline;
+  String _manufacture;
+  DateTime _manufactureDate;
+  String _model;
+  int _capacity;
+  int _cylinders;
+  FuelType _fuelType;
 
-  // Getters and Setters
+  // Default constructor (zero-argument)
+  Engine()
+      : _manufacture = '',
+        _manufactureDate = DateTime(2000, 1, 1),
+        _model = '',
+        _capacity = 0,
+        _cylinders = 0,
+        _fuelType = FuelType.gasoline;
+
+  // Full constructor with all parameters
+  Engine.full(
+    String manufacture,
+    DateTime manufactureDate,
+    String model,
+    int capacity,
+    int cylinders,
+    FuelType fuelType,
+  )   : _manufacture = manufacture,
+        _manufactureDate = manufactureDate,
+        _model = model,
+        _capacity = capacity,
+        _cylinders = cylinders,
+        _fuelType = fuelType;
+
+  // Getters/Setters
   String get manufacture => _manufacture;
   set manufacture(String value) => _manufacture = value;
 
@@ -27,37 +51,26 @@ class Engine {
   FuelType get fuelType => _fuelType;
   set fuelType(FuelType value) => _fuelType = value;
 
-  // Constructors
-  Engine();
-  Engine.full(
-    this._manufacture,
-    this._manufactureDate,
-    this._model,
-    this._capacity,
-    this._cylinders,
-    this._fuelType,
-  );
-
-  // JSON serialization
-  Map<String, dynamic> toJson() => {
-    'manufacture': _manufacture,
-    'manufactureDate': _manufactureDate.toIso8601String(),
-    'model': _model,
-    'capacity': _capacity,
-    'cylinders': _cylinders,
-    'fuelType': _fuelType.toString().split('.').last,
-  };
+  // JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'manufacture': _manufacture,
+      'manufactureDate': _manufactureDate.toIso8601String(),
+      'model': _model,
+      'capacity': _capacity,
+      'cylinders': _cylinders,
+      'fuelType': _fuelType.name,
+    };
+  }
 
   factory Engine.fromJson(Map<String, dynamic> json) {
     return Engine.full(
-      json['manufacture'],
+      json['manufacture'] ?? '',
       DateTime.parse(json['manufactureDate']),
-      json['model'],
-      json['capacity'],
-      json['cylinders'],
-      FuelType.values.firstWhere(
-        (e) => e.toString() == 'FuelType.${json['fuelType']}',
-      ),
+      json['model'] ?? '',
+      (json['capacity'] ?? 0) as int,
+      (json['cylinders'] ?? 0) as int,
+      fuelTypeFromString(json['fuelType']),
     );
   }
 }

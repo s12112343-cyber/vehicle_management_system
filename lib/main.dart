@@ -1,17 +1,49 @@
 import 'package:flutter/material.dart';
-import 'screens/motorcycle_screen.dart';
-import 'screens/car_screen.dart';
-import 'screens/truck_screen.dart';
-import 'data/vehicle_data.dart';
-import 'bloc/vehicle_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// إنشاء الـ BLoC global object
-VehicleBloc vehicleBloc = VehicleBloc();
+import 'bloc/persistence/persistence_bloc.dart';
+import 'bloc/search/search_bloc.dart';
+import 'bloc/vehicle/vehicle_bloc.dart';
+import 'bloc/vehicle/vehicle_event.dart';
+import 'repositories/search_service.dart';
+import 'repositories/storage_service.dart';
+import 'repositories/vehicle_repository.dart';
+import 'screens/Dashboard_screen.dart';
+import 'services/vehicle_api_service.dart';
+import 'services/cache_service.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await VehicleData.loadData(); // تحميل البيانات المحفوظة
-  runApp(const MyApp());
+void main() {
+  final storageService = StorageService();
+  final vehicleRepository = VehicleRepository();
+  final searchService = SearchService();
+  final apiService = VehicleApiService();
+  final cacheService = CacheService();
+
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => VehicleBloc(
+            repository: vehicleRepository,
+            apiService: apiService,
+            cacheService: cacheService,
+          )..add(LoadVehiclesEvent()),
+        ),
+        BlocProvider(
+          create: (_) => SearchBloc(
+            repository: vehicleRepository,
+            searchService: searchService,
+          ),
+        ),
+        BlocProvider(
+          create: (_) => PersistenceBloc(
+            storageService: storageService,
+          ),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -20,60 +52,25 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vehicle Management System',
-      theme: ThemeData(primarySwatch: Colors.blue),
-      home: const VehicleHome(),
-    );
-  }
-}
-
-class VehicleHome extends StatelessWidget {
-  const VehicleHome({super.key});
-
-  void _printAllVehicles() {
-    print('=== All Motorcycles ===');
-    for (var m in vehicleBloc.motorcycles) {
-      print('${m.manufactureCompany} ${m.model} Plate: ${m.plateNum}');
-    }
-    print('=== All Cars ===');
-    for (var c in vehicleBloc.cars) {
-      print('${c.manufactureCompany} ${c.model} Plate: ${c.plateNum}');
-    }
-    print('=== All Trucks ===');
-    for (var t in vehicleBloc.trucks) {
-      print('${t.manufactureCompany} ${t.model} Plate: ${t.plateNum}');
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Vehicle Management System'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.print),
-              onPressed: _printAllVehicles,
-            )
-          ],
-          bottom: const TabBar(
-            tabs: [
-              Tab(text: 'Motorcycles'),
-              Tab(text: 'Cars'),
-              Tab(text: 'Trucks'),
-            ],
-          ),
+      debugShowCheckedModeBanner: false,
+      title: 'Vehicle Management',
+      theme: ThemeData(
+        useMaterial3: true,
+        primaryColor: Colors.deepPurple,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.deepPurple,
+          foregroundColor: Colors.white,
         ),
-        body: const TabBarView(
-          children: [
-            MotorcycleScreen(),
-            CarScreen(),
-            TruckScreen(),
-          ],
+        tabBarTheme: const TabBarThemeData(
+          labelColor: Colors.deepPurple,
+          unselectedLabelColor: Colors.grey,
+          indicatorColor: Colors.deepPurple,
+        ),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.deepPurple,
         ),
       ),
+      home: const DashboardPage(),
     );
   }
 }

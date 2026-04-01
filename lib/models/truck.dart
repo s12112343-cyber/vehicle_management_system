@@ -3,18 +3,13 @@ import 'engine.dart';
 import 'enums.dart';
 
 class Truck extends Vehicle {
-  double _freeWeight = 0.0;
-  double _fullWeight = 0.0;
+  double _freeWeight;
+  double _fullWeight;
 
-  double get freeWeight => _freeWeight;
-  set freeWeight(dynamic value) => _freeWeight =
-      (value is int) ? value.toDouble() : (value is double ? value : 0.0);
-
-  double get fullWeight => _fullWeight;
-  set fullWeight(dynamic value) => _fullWeight =
-      (value is int) ? value.toDouble() : (value is double ? value : 0.0);
-
-  Truck();
+  Truck()
+      : _freeWeight = 0.0,
+        _fullWeight = 0.0,
+        super();
 
   Truck.full(
     String manufactureCompany,
@@ -24,8 +19,8 @@ class Truck extends Vehicle {
     int plateNum,
     GearType gearType,
     int bodySerialNum,
-    double length, // ✅ double
-    double width, // ✅ double
+    int length,
+    int width,
     String color,
     double freeWeight,
     double fullWeight,
@@ -44,38 +39,37 @@ class Truck extends Vehicle {
           color,
         );
 
+  double get freeWeight => _freeWeight;
+  set freeWeight(double value) => _freeWeight = value;
+
+  double get fullWeight => _fullWeight;
+  set fullWeight(double value) => _fullWeight = value;
+
+  @override
+  Map<String, dynamic> toJson() {
+    final base = super.toJson();
+    base.addAll({
+      'type': 'truck',
+      'freeWeight': _freeWeight,
+      'fullWeight': _fullWeight,
+    });
+    return base;
+  }
+
   factory Truck.fromJson(Map<String, dynamic> json) {
     return Truck.full(
       json['manufactureCompany'] ?? '',
-      DateTime.tryParse(json['manufactureDate'] ?? '') ?? DateTime.now(),
+      DateTime.parse(json['manufactureDate']),
       json['model'] ?? '',
-      Engine.fromJson(json['engine'] ?? {}),
-      json['plateNum'] ?? 0,
-      GearType.values.firstWhere(
-        (e) => e.toString() == 'GearType.${json['gearType'] ?? 'normal'}',
-        orElse: () => GearType.normal,
-      ),
-      json['bodySerialNum'] ?? 0,
-      (json['length'] is int)
-          ? (json['length'] as int).toDouble()
-          : (json['length'] is double ? json['length'] : 0.0),
-      (json['width'] is int)
-          ? (json['width'] as int).toDouble()
-          : (json['width'] is double ? json['width'] : 0.0),
+      Engine.fromJson(Map<String, dynamic>.from(json['engine'])),
+      (json['plateNum'] ?? 0) as int,
+      gearTypeFromString(json['gearType']),
+      (json['bodySerialNum'] ?? 0) as int,
+      (json['length'] ?? 0) as int,
+      (json['width'] ?? 0) as int,
       json['color'] ?? '',
-      (json['freeWeight'] is int)
-          ? (json['freeWeight'] as int).toDouble()
-          : (json['freeWeight'] is double ? json['freeWeight'] : 0.0),
-      (json['fullWeight'] is int)
-          ? (json['fullWeight'] as int).toDouble()
-          : (json['fullWeight'] is double ? json['fullWeight'] : 0.0),
+      (json['freeWeight'] ?? 0.0).toDouble(),
+      (json['fullWeight'] ?? 0.0).toDouble(),
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    final json = super.toJson();
-    json['freeWeight'] = _freeWeight;
-    json['fullWeight'] = _fullWeight;
-    return json;
   }
 }

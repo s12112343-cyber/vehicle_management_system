@@ -2,15 +2,46 @@ import 'engine.dart';
 import 'enums.dart';
 
 class Automobile {
-  String _manufactureCompany = '';
-  DateTime _manufactureDate = DateTime.now();
-  String _model = '';
-  Engine _engine = Engine();
-  int _plateNum = 0;
-  GearType _gearType = GearType.normal;
-  int _bodySerialNum = 0;
+  String _id;
+  String _manufactureCompany;
+  DateTime _manufactureDate;
+  String _model;
+  Engine _engine;
+  int _plateNum;
+  GearType _gearType;
+  int _bodySerialNum;
 
-  // Getters & Setters
+  Automobile()
+      : _id = '',
+        _manufactureCompany = '',
+        _manufactureDate = DateTime(2000, 1, 1),
+        _model = '',
+        _engine = Engine(),
+        _plateNum = 0,
+        _gearType = GearType.normal,
+        _bodySerialNum = 0;
+
+  Automobile.full(
+    String manufactureCompany,
+    DateTime manufactureDate,
+    String model,
+    Engine engine,
+    int plateNum,
+    GearType gearType,
+    int bodySerialNum, [
+    String id = '',
+  ])  : _id = id,
+        _manufactureCompany = manufactureCompany,
+        _manufactureDate = manufactureDate,
+        _model = model,
+        _engine = engine,
+        _plateNum = plateNum,
+        _gearType = gearType,
+        _bodySerialNum = bodySerialNum;
+
+  String get id => _id;
+  set id(String value) => _id = value;
+
   String get manufactureCompany => _manufactureCompany;
   set manufactureCompany(String value) => _manufactureCompany = value;
 
@@ -32,40 +63,29 @@ class Automobile {
   int get bodySerialNum => _bodySerialNum;
   set bodySerialNum(int value) => _bodySerialNum = value;
 
-  // Constructors
-  Automobile();
-  Automobile.full(
-    this._manufactureCompany,
-    this._manufactureDate,
-    this._model,
-    this._engine,
-    this._plateNum,
-    this._gearType,
-    this._bodySerialNum,
-  );
-
-  // JSON
-  Map<String, dynamic> toJson() => {
-    'manufactureCompany': _manufactureCompany,
-    'manufactureDate': _manufactureDate.toIso8601String(),
-    'model': _model,
-    'engine': _engine.toJson(),
-    'plateNum': _plateNum,
-    'gearType': _gearType.toString().split('.').last,
-    'bodySerialNum': _bodySerialNum,
-  };
+  Map<String, dynamic> toJson() {
+    return {
+      'id': _id,
+      'manufactureCompany': _manufactureCompany,
+      'manufactureDate': _manufactureDate.toIso8601String(),
+      'model': _model,
+      'engine': _engine.toJson(),
+      'plateNum': _plateNum,
+      'gearType': _gearType.name,
+      'bodySerialNum': _bodySerialNum,
+    };
+  }
 
   factory Automobile.fromJson(Map<String, dynamic> json) {
     return Automobile.full(
-      json['manufactureCompany'],
+      json['manufactureCompany'] ?? '',
       DateTime.parse(json['manufactureDate']),
-      json['model'],
-      Engine.fromJson(json['engine']),
-      json['plateNum'],
-      GearType.values.firstWhere(
-        (e) => e.toString() == 'GearType.${json['gearType']}',
-      ),
-      json['bodySerialNum'],
+      json['model'] ?? '',
+      Engine.fromJson(Map<String, dynamic>.from(json['engine'])),
+      (json['plateNum'] ?? 0) as int,
+      gearTypeFromString(json['gearType']),
+      (json['bodySerialNum'] ?? 0) as int,
+      json['id'] ?? '',
     );
   }
 }

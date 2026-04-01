@@ -1,67 +1,74 @@
+import 'automobile.dart';
 import 'engine.dart';
 import 'enums.dart';
 
-class Vehicle {
-  String manufactureCompany = '';
-  DateTime manufactureDate = DateTime.now();
-  String model = '';
-  Engine engine = Engine();
-  int plateNum = 0;
-  GearType gearType = GearType.normal;
-  int bodySerialNum = 0;
-  double length = 0.0; // ✅ double
-  double width = 0.0; // ✅ double
-  String color = '';
+class Vehicle extends Automobile {
+  int _length;
+  int _width;
+  String _color;
 
-  Vehicle();
+  Vehicle()
+      : _length = 0,
+        _width = 0,
+        _color = '',
+        super();
 
   Vehicle.full(
-    this.manufactureCompany,
-    this.manufactureDate,
-    this.model,
-    this.engine,
-    this.plateNum,
-    this.gearType,
-    this.bodySerialNum,
-    this.length,
-    this.width,
-    this.color,
-  );
+    String manufactureCompany,
+    DateTime manufactureDate,
+    String model,
+    Engine engine,
+    int plateNum,
+    GearType gearType,
+    int bodySerialNum,
+    int length,
+    int width,
+    String color,
+  )   : _length = length,
+        _width = width,
+        _color = color,
+        super.full(
+          manufactureCompany,
+          manufactureDate,
+          model,
+          engine,
+          plateNum,
+          gearType,
+          bodySerialNum,
+        );
+
+  int get length => _length;
+  set length(int value) => _length = value;
+
+  int get width => _width;
+  set width(int value) => _width = value;
+
+  String get color => _color;
+  set color(String value) => _color = value;
+
+  @override
+  Map<String, dynamic> toJson() {
+    final base = super.toJson();
+    base.addAll({
+      'length': _length,
+      'width': _width,
+      'color': _color,
+    });
+    return base;
+  }
 
   factory Vehicle.fromJson(Map<String, dynamic> json) {
     return Vehicle.full(
       json['manufactureCompany'] ?? '',
-      DateTime.tryParse(json['manufactureDate'] ?? '') ?? DateTime.now(),
+      DateTime.parse(json['manufactureDate']),
       json['model'] ?? '',
-      Engine.fromJson(json['engine'] ?? {}),
-      json['plateNum'] ?? 0,
-      GearType.values.firstWhere(
-        (e) => e.toString() == 'GearType.${json['gearType'] ?? 'normal'}',
-        orElse: () => GearType.normal,
-      ),
-      json['bodySerialNum'] ?? 0,
-      (json['length'] is int)
-          ? (json['length'] as int).toDouble()
-          : (json['length'] is double ? json['length'] : 0.0),
-      (json['width'] is int)
-          ? (json['width'] as int).toDouble()
-          : (json['width'] is double ? json['width'] : 0.0),
+      Engine.fromJson(Map<String, dynamic>.from(json['engine'])),
+      (json['plateNum'] ?? 0) as int,
+      gearTypeFromString(json['gearType']),
+      (json['bodySerialNum'] ?? 0) as int,
+      (json['length'] ?? 0) as int,
+      (json['width'] ?? 0) as int,
       json['color'] ?? '',
     );
-  }
-
-  Map<String, dynamic> toJson() {
-    return {
-      'manufactureCompany': manufactureCompany,
-      'manufactureDate': manufactureDate.toIso8601String(),
-      'model': model,
-      'engine': engine.toJson(),
-      'plateNum': plateNum,
-      'gearType': gearType.toString().split('.').last,
-      'bodySerialNum': bodySerialNum,
-      'length': length,
-      'width': width,
-      'color': color,
-    };
   }
 }
