@@ -4,7 +4,7 @@
       "id": "1",
       "type": "car",
       "manufactureCompany": "Toyota",
-      "manufactureDateDate": "2022-05-15T00:00:00.000Z",
+      "manufactureDate": "2022-05-15T00:00:00.000Z",
       "model": "Corolla",
       "engine": {
         "manufacture": "Toyota",
@@ -27,7 +27,7 @@
       "id": "2",
       "type": "car",
       "manufactureCompany": "Honda",
-      "manufactureDateDate": "2021-08-20T00:00:00.000Z",
+      "manufactureDate": "2021-08-20T00:00:00.000Z",
       "model": "Civic",
       "engine": {
         "manufacture": "Honda",
@@ -50,7 +50,7 @@
       "id": "3",
       "type": "motorcycle",
       "manufactureCompany": "Harley-Davidson",
-      "manufactureDateDate": "2023-01-10T00:00:00.000Z",
+      "manufactureDate": "2023-01-10T00:00:00.000Z",
       "model": "Street 750",
       "engine": {
         "manufacture": "Harley-Davidson",
@@ -70,7 +70,7 @@
       "id": "4",
       "type": "motorcycle",
       "manufactureCompany": "Kawasaki",
-      "manufactureDateDate": "2022-09-05T00:00:00.000Z",
+      "manufactureDate": "2022-09-05T00:00:00.000Z",
       "model": "Ninja 400",
       "engine": {
         "manufacture": "Kawasaki",
@@ -84,13 +84,13 @@
       "gearType": "automatic",
       "bodySerialNum": 3333333,
       "tierDiameter": 17,
-      "length": 2.0
+      "length": 2
     },
     {
       "id": "5",
       "type": "truck",
       "manufactureCompany": "Volvo",
-      "manufactureDateDate": "2021-03-18T00:00:00.000Z",
+      "manufactureDate": "2021-03-18T00:00:00.000Z",
       "model": "FH16",
       "engine": {
         "manufacture": "Volvo",
@@ -107,13 +107,13 @@
       "width": 3,
       "color": "Red",
       "freeWeight": 8000.5,
-      "fullWeight": 25000.0
+      "fullWeight": 25000
     },
     {
       "id": "6",
       "type": "truck",
       "manufactureCompany": "MAN",
-      "manufactureDateDate": "2022-06-12T00:00:00.000Z",
+      "manufactureDate": "2022-06-12T00:00:00.000Z",
       "model": "TGX",
       "engine": {
         "manufacture": "MAN",
@@ -129,14 +129,14 @@
       "length": 9,
       "width": 2,
       "color": "White",
-      "freeWeight": 7500.0,
-      "fullWeight": 23000.0
+      "freeWeight": 7500,
+      "fullWeight": 23000
     },
     {
       "id": "7",
       "type": "car",
       "manufactureCompany": "Mercedes-Benz",
-      "manufactureDateDate": "2023-02-28T00:00:00.000Z",
+      "manufactureDate": "2023-02-28T00:00:00.000Z",
       "model": "C-Class",
       "engine": {
         "manufacture": "Mercedes-Benz",
@@ -159,7 +159,7 @@
       "id": "8",
       "type": "motorcycle",
       "manufactureCompany": "Yamaha",
-      "manufactureDateDate": "2023-07-11T00:00:00.000Z",
+      "manufactureDate": "2023-07-11T00:00:00.000Z",
       "model": "YZF-R6",
       "engine": {
         "manufacture": "Yamaha",
@@ -175,5 +175,51 @@
       "tierDiameter": 17,
       "length": 2.1
     }
+    ,{
+  "id": "9",
+  "type": "car",
+  "manufactureCompany": "Tesla",
+  "manufactureDate": "2024-01-01T00:00:00.000Z",
+  "model": "Model 3",
+  "engine": {
+    "manufacture": "Tesla",
+    "manufactureDate": "2024-01-01T00:00:00.000Z",
+    "model": "Electric",
+    "capacity": 0,
+    "cylinders": 0,
+    "fuelType": "gasoline"
+  },
+  "plateNum": 99999,
+  "gearType": "automatic",
+  "bodySerialNum": 9999999,
+  "length": 4,
+  "width": 2,
+  "color": "White",
+  "chairNum": 5,
+  "isFurnitureLeather": true
+},
+{
+  "id": "10",
+  "type": "car",
+  "manufactureCompany": "BMW",
+  "manufactureDate": "2023-10-15T00:00:00.000Z",
+  "model": "M4 Competition",
+  "engine": {
+    "manufacture": "BMW",
+    "manufactureDate": "2023-09-20T00:00:00.000Z",
+    "model": "3.0L Twin-Turbo",
+    "capacity": 3000,
+    "cylinders": 6,
+    "fuelType": "gasoline"
+  },
+  "plateNum": 22222,
+  "gearType": "automatic",
+  "bodySerialNum": 8888888,
+  "length": 4,
+  "width": 2,
+  "color": "Green",
+  "chairNum": 4,
+  "isFurnitureLeather": true
+}
   ]
 }
